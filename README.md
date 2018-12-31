@@ -1,4 +1,9 @@
 # Easy Touhou 09 Adonis
+[![](https://img.shields.io/github/issues/badges/shields.svg)](https://github.com/Tudi20/easyth09adonis)
+[![](https://img.shields.io/github/downloads/:user/:repo/:tag/total.svg)](https://github.com/Tudi20/easyth09adonis)
+[![](https://img.shields.io/github/status/contexts/pulls/badges/shields/1110.svg)](https://github.com/Tudi20/easyth09adonis)
+[![](https://img.shields.io/github/license/:user/:repo.svg)](https://github.com/Tudi20/easyth09adonis)
+
 Eases the use of adonis for Touhou 09.
 This is awesome because:
 * It's a GUI.
