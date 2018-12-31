@@ -122,8 +122,10 @@ namespace EasyTH9Adonis
             inputSimulator.Keyboard.KeyPress(VirtualKeyCode.RETURN); // Select server option
             inputSimulator.Keyboard.TextEntry(Convert.ToInt32(numeric_Port.Value).ToString());
             inputSimulator.Keyboard.KeyPress(VirtualKeyCode.RETURN); //Select port
+            label_Status.Text = @"Waiting for Client to connect...";
             inputSimulator.Keyboard.KeyPress(VirtualKeyCode.RETURN); //Use recommended latency
             inputSimulator.Keyboard.KeyPress(VirtualKeyCode.RETURN); //Use default side
+            label_Status.Text = @"Starting Touhou 9...";
         }
 
         private async void numeric_Port_ValueChanged(object sender, EventArgs e)
@@ -153,6 +155,7 @@ namespace EasyTH9Adonis
             inputSimulator.Keyboard.KeyPress(VirtualKeyCode.RETURN); //Select IP
             inputSimulator.Keyboard.TextEntry(Convert.ToInt32(numeric_Port.Value).ToString());
             inputSimulator.Keyboard.KeyPress(VirtualKeyCode.RETURN); //Select port
+            label_Status.Text = @"Connecting to Server...";
         }
 
         private void tabControl1_Deselected(object sender, TabControlEventArgs e)
@@ -172,11 +175,12 @@ namespace EasyTH9Adonis
             inputSimulator.Keyboard.KeyPress(VirtualKeyCode.RETURN); //Select IP
             inputSimulator.Keyboard.TextEntry(Convert.ToInt32(numeric_Port.Value).ToString());
             inputSimulator.Keyboard.KeyPress(VirtualKeyCode.RETURN); //Select port
+            label_Status.Text = @"Connecting to Server...";
         }
 
         private void label_GitHub_Click(object sender, EventArgs e)
         {
-            Process.Start("https://github.com/Tudi20");
+            Process.Start("https://github.com/Tudi20/easyth09adonis");
         }
     }
 }
