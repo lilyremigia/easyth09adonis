@@ -1,8 +1,7 @@
 # Easy Touhou 09 Adonis
-[![](https://img.shields.io/github/issues/Tudi20/easyth09adonis.svg)](https://github.com/Tudi20/easyth09adonis)
-[![GitHub release](https://img.shields.io/github/release/Tudi20/easyth09adonis.svg?style=flat-square)](https://github.com/Tudi20/easyth09adonis)
-[![](https://img.shields.io/github/status/contexts/pulls/Tudi20/easyth09adonis.svg)](https://github.com/Tudi20/easyth09adonis)
-[![](https://img.shields.io/github/license/Tudi20/easyth09adonis.svg)](https://github.com/Tudi20/easyth09adonis)
+[![GitHub issues](https://img.shields.io/github/issues/Tudi20/easyth09adonis.svg?style=flat-square)](https://github.com/Tudi20/easyth09adonis/issues)
+[![GitHub release](https://img.shields.io/github/release/Tudi20/easyth09adonis.svg?style=flat-square)](https://github.com/Tudi20/easyth09adonis/releases)
+[![GitHub lincense](https://img.shields.io/github/license/Tudi20/easyth09adonis.svg?style=flat-square)](https://github.com/Tudi20/easyth09adonis/blob/master/LICENSE)
 
 Eases the use of adonis for Touhou 09.
 This is awesome because:
