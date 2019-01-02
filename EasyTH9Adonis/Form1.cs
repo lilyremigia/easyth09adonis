@@ -13,11 +13,11 @@ namespace EasyTH9Adonis
     public partial class Form1 : Form
     {
         [DllImport("User32.dll")]
-        static extern int SetForegroundWindow(IntPtr point);
+        private static extern int SetForegroundWindow(IntPtr point);
 
         private Mapping _currentMapping;
-        private NatDevice device;
-        private InputSimulator inputSimulator = new InputSimulator();
+        private NatDevice _device;
+        private readonly InputSimulator _inputSimulator = new InputSimulator();
 
         public Form1()
         {
@@ -36,15 +36,15 @@ namespace EasyTH9Adonis
             {
                 label_Status.Text = @"Starting UPnP...";
                 var discoverer = new NatDiscoverer();
-                device = await discoverer.DiscoverDeviceAsync();
-                await device.CreatePortMapAsync(_currentMapping = new Mapping(Protocol.Udp, Convert.ToInt32(numeric_Port.Value), Convert.ToInt32(numeric_Port.Value), "Touhou 7"));
-                 textBox_upnpIP.Text = (await device.GetExternalIPAsync()).ToString();
+                _device = await discoverer.DiscoverDeviceAsync();
+                await _device.CreatePortMapAsync(_currentMapping = new Mapping(Protocol.Udp, Convert.ToInt32(numeric_Port.Value), Convert.ToInt32(numeric_Port.Value), "Touhou 7"));
+                 textBox_upnpIP.Text = (await _device.GetExternalIPAsync()).ToString();
                 label_Status.Text = @"UPnP started.";
             }
             else
             {
                 label_Status.Text = @"Stopping UPnP...";
-                await device.DeletePortMapAsync(_currentMapping);
+                await _device.DeletePortMapAsync(_currentMapping);
                 textBox_upnpIP.Text = @"UPnP Disabled";
                 label_Status.Text = @"UpnP disabled.";
             }
@@ -95,22 +95,22 @@ namespace EasyTH9Adonis
         {
             if (domain_Adonis.SelectedIndex == -1) domain_Adonis.SelectedIndex = 0;
             KillRogueProcesses();
-            ProcessStartInfo startInfo = new ProcessStartInfo("cmd.exe");
+            var startInfo = new ProcessStartInfo("cmd.exe");
             var cmd = Process.Start(startInfo);
             while (cmd != null && !cmd.Responding) Thread.Sleep(1);
             Thread.Sleep(100);
-            SetForegroundWindow(cmd.MainWindowHandle);
-            inputSimulator.Keyboard.TextEntry(domain_Adonis.SelectedItem + ".exe");
-            inputSimulator.Keyboard.KeyPress(VirtualKeyCode.RETURN);
+            if (cmd != null) SetForegroundWindow(cmd.MainWindowHandle);
+            _inputSimulator.Keyboard.TextEntry(domain_Adonis.SelectedItem + ".exe");
+            _inputSimulator.Keyboard.KeyPress(VirtualKeyCode.RETURN);
             label_Status.Text = @"Taking a break.";
             Thread.Sleep(1000);
             label_Status.Text = @"Applying inputs";
         }
 
-        private async void StopUPiP()
+        private async void StopUpiP()
         {
             label_Status.Text = @"Stopping UPnP...";
-            if (_currentMapping != null) await device.DeletePortMapAsync(_currentMapping);
+            if (_currentMapping != null) await _device.DeletePortMapAsync(_currentMapping);
             textBox_upnpIP.Text = @"UPnP Disabled";
             label_Status.Text = @"UpnP disabled.";
         }
@@ -118,13 +118,13 @@ namespace EasyTH9Adonis
         private void btn_StartServer_Click(object sender, EventArgs e)
         {
             StartAdonis();
-            inputSimulator.Keyboard.TextEntry("s");
-            inputSimulator.Keyboard.KeyPress(VirtualKeyCode.RETURN); // Select server option
-            inputSimulator.Keyboard.TextEntry(Convert.ToInt32(numeric_Port.Value).ToString());
-            inputSimulator.Keyboard.KeyPress(VirtualKeyCode.RETURN); //Select port
+            _inputSimulator.Keyboard.TextEntry("s");
+            _inputSimulator.Keyboard.KeyPress(VirtualKeyCode.RETURN); // Select server option
+            _inputSimulator.Keyboard.TextEntry(Convert.ToInt32(numeric_Port.Value).ToString());
+            _inputSimulator.Keyboard.KeyPress(VirtualKeyCode.RETURN); //Select port
             label_Status.Text = @"Waiting for Client to connect...";
-            inputSimulator.Keyboard.KeyPress(VirtualKeyCode.RETURN); //Use recommended latency
-            inputSimulator.Keyboard.KeyPress(VirtualKeyCode.RETURN); //Use default side
+            _inputSimulator.Keyboard.KeyPress(VirtualKeyCode.RETURN); //Use recommended latency
+            _inputSimulator.Keyboard.KeyPress(VirtualKeyCode.RETURN); //Use default side
             label_Status.Text = @"Starting Touhou 9...";
         }
 
@@ -133,28 +133,28 @@ namespace EasyTH9Adonis
             if (!checkBox_useUPNP.Checked) return;
             textBox_upnpIP.Text = @"Updating UPnP...";
             label_Status.Text = @"Deleting existing UPnP...";
-            await device.DeletePortMapAsync(_currentMapping);
+            await _device.DeletePortMapAsync(_currentMapping);
             label_Status.Text = @"Creating new UPnP...";
-            await device.CreatePortMapAsync(_currentMapping = new Mapping(Protocol.Udp, Convert.ToInt32(numeric_Port.Value), Convert.ToInt32(numeric_Port.Value), "Touhou 7"));
-            textBox_upnpIP.Text = device.GetExternalIPAsync().Result.ToString();
+            await _device.CreatePortMapAsync(_currentMapping = new Mapping(Protocol.Udp, Convert.ToInt32(numeric_Port.Value), Convert.ToInt32(numeric_Port.Value), "Touhou 7"));
+            textBox_upnpIP.Text = _device.GetExternalIPAsync().Result.ToString();
             label_Status.Text = @"UPnP updated.";
             
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            StopUPiP();
+            StopUpiP();
         }
 
         private void btn_Client_Click(object sender, EventArgs e)
         {
             StartAdonis();
-            inputSimulator.Keyboard.TextEntry("c");
-            inputSimulator.Keyboard.KeyPress(VirtualKeyCode.RETURN); // Select client option
-            inputSimulator.Keyboard.TextEntry(textBox_ConnectIP.Text);
-            inputSimulator.Keyboard.KeyPress(VirtualKeyCode.RETURN); //Select IP
-            inputSimulator.Keyboard.TextEntry(Convert.ToInt32(numeric_Port.Value).ToString());
-            inputSimulator.Keyboard.KeyPress(VirtualKeyCode.RETURN); //Select port
+            _inputSimulator.Keyboard.TextEntry("c");
+            _inputSimulator.Keyboard.KeyPress(VirtualKeyCode.RETURN); // Select client option
+            _inputSimulator.Keyboard.TextEntry(textBox_ConnectIP.Text);
+            _inputSimulator.Keyboard.KeyPress(VirtualKeyCode.RETURN); //Select IP
+            _inputSimulator.Keyboard.TextEntry(Convert.ToInt32(numeric_Port.Value).ToString());
+            _inputSimulator.Keyboard.KeyPress(VirtualKeyCode.RETURN); //Select port
             label_Status.Text = @"Connecting to Server...";
         }
 
@@ -162,19 +162,19 @@ namespace EasyTH9Adonis
         {
             if (e.TabPageIndex == 0)
             {
-                StopUPiP();
+                StopUpiP();
             }
         }
 
         private void btn_watch_Click(object sender, EventArgs e)
         {
             StartAdonis();
-            inputSimulator.Keyboard.TextEntry("w");
-            inputSimulator.Keyboard.KeyPress(VirtualKeyCode.RETURN); // Select client option
-            inputSimulator.Keyboard.TextEntry(textBox_ConnectIP.Text);
-            inputSimulator.Keyboard.KeyPress(VirtualKeyCode.RETURN); //Select IP
-            inputSimulator.Keyboard.TextEntry(Convert.ToInt32(numeric_Port.Value).ToString());
-            inputSimulator.Keyboard.KeyPress(VirtualKeyCode.RETURN); //Select port
+            _inputSimulator.Keyboard.TextEntry("w");
+            _inputSimulator.Keyboard.KeyPress(VirtualKeyCode.RETURN); // Select client option
+            _inputSimulator.Keyboard.TextEntry(textBox_ConnectIP.Text);
+            _inputSimulator.Keyboard.KeyPress(VirtualKeyCode.RETURN); //Select IP
+            _inputSimulator.Keyboard.TextEntry(Convert.ToInt32(numeric_Port.Value).ToString());
+            _inputSimulator.Keyboard.KeyPress(VirtualKeyCode.RETURN); //Select port
             label_Status.Text = @"Connecting to Server...";
         }
 
