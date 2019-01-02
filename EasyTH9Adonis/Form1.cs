@@ -10,11 +10,14 @@ using Open.Nat;
 
 namespace EasyTH9Adonis
 {
-    public partial class Form1 : Form
+    internal class NativeMethods
     {
         [DllImport("User32.dll")]
-        private static extern int SetForegroundWindow(IntPtr point);
+        internal static extern int SetForegroundWindow(IntPtr point);
+    }
 
+    public partial class Form1 : Form
+    {
         private Mapping _currentMapping;
         private NatDevice _device;
         private readonly InputSimulator _inputSimulator = new InputSimulator();
@@ -51,44 +54,58 @@ namespace EasyTH9Adonis
             
         }
 
-        private void KillRogueProcesses()
+        private byte KillRogueAdonis()
         {
-            label_Status.Text = @"Checking for rogue processes...";
-            var wasRogueProcess = false;
+            byte wasRogueProcess = 0;
             var p = Process.GetProcessesByName(domain_Adonis.SelectedItem.ToString()).FirstOrDefault();
             if (p != null)
             {
-                wasRogueProcess = true;
+                wasRogueProcess = 1;
                 label_Status.Text = @"Killed rogue " + domain_Adonis.SelectedItem + @".exe process!";
             }
 
             p?.Close();
+            return wasRogueProcess;
+        }
 
+        private byte KillRogueTouhou()
+        {
+            byte wasRogueProcess = 0;
+            Process p;
             if (domain_Adonis.SelectedIndex == 0)
+            {
+                p = Process.GetProcessesByName("th09.exe").FirstOrDefault();
+                if (p != null)
                 {
-                    p = Process.GetProcessesByName("th09.exe").FirstOrDefault();
-                    if (p != null)
-                    {
-                        wasRogueProcess = true;
-                        label_Status.Text = @"Killed rogue th09.exe!";
-                    }
-
-                    p?.Close();
+                    wasRogueProcess = 1;
+                    label_Status.Text = @"Killed rogue th09.exe!";
                 }
-                else
+
+                p?.Close();
+            }
+            else
+            {
+                p = Process.GetProcessesByName("th09e.exe").FirstOrDefault();
+                if (p != null)
                 {
-                    p = Process.GetProcessesByName("th09e.exe").FirstOrDefault();
-                    if (p != null)
-                    {
-                        wasRogueProcess = true;
-                        label_Status.Text = @"Killed rogue th09e.exe!";
-                    }
-
-                    p?.Close();
+                    wasRogueProcess = 1;
+                    label_Status.Text = @"Killed rogue th09e.exe!";
                 }
-            
 
-            label_Status.Text = !wasRogueProcess ? @"Finished killing rogue processes." : @"No rogue process has been found.";
+                p?.Close();
+            }
+
+            return wasRogueProcess;
+        }
+
+        private void KillRogueProcesses()
+        {
+            label_Status.Text = @"Checking for rogue processes...";
+            byte wasRogueProcess = 0;
+            wasRogueProcess += KillRogueAdonis();
+            wasRogueProcess += KillRogueTouhou();
+
+            label_Status.Text = wasRogueProcess>0 ? @"Finished killing rogue processes." : @"No rogue process has been found.";
         }
 
         private void StartAdonis()
@@ -99,7 +116,7 @@ namespace EasyTH9Adonis
             var cmd = Process.Start(startInfo);
             while (cmd != null && !cmd.Responding) Thread.Sleep(1);
             Thread.Sleep(100);
-            if (cmd != null) SetForegroundWindow(cmd.MainWindowHandle);
+            if (cmd != null) NativeMethods.SetForegroundWindow(cmd.MainWindowHandle);
             _inputSimulator.Keyboard.TextEntry(domain_Adonis.SelectedItem + ".exe");
             _inputSimulator.Keyboard.KeyPress(VirtualKeyCode.RETURN);
             label_Status.Text = @"Taking a break.";
