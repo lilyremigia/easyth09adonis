@@ -22,7 +22,7 @@ namespace EasyTH9Adonis
         private const string IniFile = "adonis_config";
         private readonly InputSimulator _inputSimulator = new InputSimulator();
         private readonly FileIniDataParser _parser = new FileIniDataParser();
-        
+
 
         public Form1()
         {
@@ -32,6 +32,7 @@ namespace EasyTH9Adonis
         private void Form1_Load(object sender, EventArgs e)
         {
             #region LoadIniFile
+
             // Exit and Error if Ini File not found.
             if (!File.Exists(IniFile))
             {
@@ -39,6 +40,7 @@ namespace EasyTH9Adonis
                     @"Ini File Not Found Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();
             }
+
             _iniData = _parser.ReadFile(IniFile);
             numeric_Port.Value = int.Parse(_iniData["SaveIP"]["ServerPort"]);
             textBox_ConnectIP.Text = _iniData["SaveIP"]["PeerIP"];
@@ -53,6 +55,7 @@ namespace EasyTH9Adonis
             checkBox_GameWindow_TitleBar.Checked = bool.Parse(_iniData["Window"]["TitleBar"]);
             checkBox_GameWindow_Enabled.Checked = bool.Parse(_iniData["Window"]["enabled"]);
             checkBox_GameWindow_AlwaysOnTop.Checked = bool.Parse(_iniData["Window"]["AlwaysOnTop"]);
+
             #endregion
         }
 
@@ -73,12 +76,12 @@ namespace EasyTH9Adonis
             _iniData["Window"]["enabled"] = ConvertBoolToInt(checkBox_GameWindow_Enabled.Checked).ToString();
             _parser.WriteFile(IniFile, _iniData);
         }
-        
+
         #if DEBUG
         private byte KillRogueAdonis()
-        #else 
+        #else
         private void KillRogueAdonis()
-        #endif
+            #endif
         {
             #if DEBUG
             byte wasRogueProcess = 0;
@@ -102,7 +105,7 @@ namespace EasyTH9Adonis
         private byte KillRogueTouhou()
         #else
         private void KillRogueTouhou()
-        #endif
+            #endif
         {
             #if DEBUG
             byte wasRogueProcess = 0;
@@ -146,7 +149,8 @@ namespace EasyTH9Adonis
             byte wasRogueProcess = 0;
             wasRogueProcess += KillRogueAdonis();
             wasRogueProcess += KillRogueTouhou();
-            label_Status.Text = wasRogueProcess>0 ? @"Finished killing rogue processes." : @"No rogue process has been found.";
+            label_Status.Text =
+ wasRogueProcess>0 ? @"Finished killing rogue processes." : @"No rogue process has been found.";
             #else
             label_Status.Text = @"The girls are preparing...";
             KillRogueAdonis();
@@ -207,10 +211,10 @@ namespace EasyTH9Adonis
             #if DEBUG
             label_Status.Text = @"Creating new UPnP...";
             #endif
-            await _device.CreatePortMapAsync(_currentMapping = new Mapping(Protocol.Udp, Convert.ToInt32(numeric_Port.Value), Convert.ToInt32(numeric_Port.Value), "Touhou 7"));
+            await _device.CreatePortMapAsync(_currentMapping = new Mapping(Protocol.Udp,
+                Convert.ToInt32(numeric_Port.Value), Convert.ToInt32(numeric_Port.Value), "Touhou 7"));
             textBox_upnpIP.Text = _device.GetExternalIPAsync().Result.ToString();
             label_Status.Text = @"UPnP updated.";
-            
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
@@ -254,7 +258,10 @@ namespace EasyTH9Adonis
             #endif
         }
 
-        private void label_GitHub_Click(object sender, EventArgs e) => Process.Start("https://github.com/Tudi20/easyth09adonis");
+        private void label_GitHub_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://github.com/Tudi20/easyth09adonis");
+        }
 
         private async void checkBox_UseUPnP_CheckedChanged(object sender, EventArgs e)
         {
@@ -263,7 +270,8 @@ namespace EasyTH9Adonis
                 label_Status.Text = @"Starting UPnP...";
                 var discoverer = new NatDiscoverer();
                 _device = await discoverer.DiscoverDeviceAsync();
-                await _device.CreatePortMapAsync(_currentMapping = new Mapping(Protocol.Udp, Convert.ToInt32(numeric_Port.Value), Convert.ToInt32(numeric_Port.Value), "Touhou 7"));
+                await _device.CreatePortMapAsync(_currentMapping = new Mapping(Protocol.Udp,
+                    Convert.ToInt32(numeric_Port.Value), Convert.ToInt32(numeric_Port.Value), "Touhou 7"));
                 textBox_upnpIP.Text = (await _device.GetExternalIPAsync()).ToString();
                 label_Status.Text = @"UPnP started.";
             }
