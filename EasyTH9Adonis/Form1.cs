@@ -63,6 +63,7 @@ namespace EasyTH9Adonis
 
         private void SaveIniFile()
         {
+            label_Status.Text = @"Saving to Ini File...";
             _iniData["SaveIP"]["ServerPort"] = numeric_Port.Value.ToString(CultureInfo.InvariantCulture);
             _iniData["SaveIP"]["PeerIP"] = textBox_ConnectIP.Text;
             _iniData["EasyAdonis"]["UseUPnP"] = checkBox_UseUPnP.Checked.ToString();
@@ -75,6 +76,7 @@ namespace EasyTH9Adonis
             _iniData["Window"]["AlwaysOnTop"] = ConvertBoolToInt(checkBox_GameWindow_AlwaysOnTop.Checked).ToString();
             _iniData["Window"]["enabled"] = ConvertBoolToInt(checkBox_GameWindow_Enabled.Checked).ToString();
             _parser.WriteFile(IniFile, _iniData);
+            label_Status.Text = @"Successfully saved to Ini File...";
         }
 
         #if DEBUG
