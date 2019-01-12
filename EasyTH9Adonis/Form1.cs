@@ -244,11 +244,7 @@ namespace EasyTH9Adonis
 
         private void label_GitHub_Click(object sender, EventArgs e) => Process.Start("https://github.com/Tudi20/easyth09adonis");
 
-        private void textBox_username_TextChanged(object sender, EventArgs e)
-        {
-            _iniData["PlayerName"]["Name"] = textBox_username.Text;
-            _parser.WriteFile(IniFile, _iniData);
-        }
+        private void SaveIniFile(object sender, EventArgs e) => SaveIniFile();
     }
 
     internal static class NativeMethods

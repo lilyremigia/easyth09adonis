@@ -263,7 +263,7 @@ namespace EasyTH9Adonis
             this.textBox_username.Size = new System.Drawing.Size(160, 20);
             this.textBox_username.TabIndex = 10;
             this.toolTip1.SetToolTip(this.textBox_username, "The username to display in adonis.");
-            this.textBox_username.TextChanged += new System.EventHandler(this.textBox_username_TextChanged);
+            this.textBox_username.TextChanged += new System.EventHandler(this.SaveIniFile);
             // 
             // label_GitHub
             // 
@@ -317,6 +317,7 @@ namespace EasyTH9Adonis
             this.numericUpDown_GameWindow_X.Name = "numericUpDown_GameWindow_X";
             this.numericUpDown_GameWindow_X.Size = new System.Drawing.Size(60, 20);
             this.numericUpDown_GameWindow_X.TabIndex = 1;
+            this.numericUpDown_GameWindow_X.ValueChanged += new System.EventHandler(this.SaveIniFile);
             // 
             // label_GameWindow_Y
             // 
@@ -338,6 +339,7 @@ namespace EasyTH9Adonis
             this.numericUpDown_GameWindow_Y.Name = "numericUpDown_GameWindow_Y";
             this.numericUpDown_GameWindow_Y.Size = new System.Drawing.Size(60, 20);
             this.numericUpDown_GameWindow_Y.TabIndex = 3;
+            this.numericUpDown_GameWindow_Y.ValueChanged += new System.EventHandler(this.SaveIniFile);
             // 
             // label_GameWindow_Width
             // 
@@ -359,6 +361,7 @@ namespace EasyTH9Adonis
             this.numericUpDown_GameWindow_Width.Name = "numericUpDown_GameWindow_Width";
             this.numericUpDown_GameWindow_Width.Size = new System.Drawing.Size(60, 20);
             this.numericUpDown_GameWindow_Width.TabIndex = 5;
+            this.numericUpDown_GameWindow_Width.ValueChanged += new System.EventHandler(this.SaveIniFile);
             // 
             // label_GameWindow_Height
             // 
@@ -380,6 +383,7 @@ namespace EasyTH9Adonis
             this.numericUpDown_GameWindow_Height.Name = "numericUpDown_GameWindow_Height";
             this.numericUpDown_GameWindow_Height.Size = new System.Drawing.Size(60, 20);
             this.numericUpDown_GameWindow_Height.TabIndex = 7;
+            this.numericUpDown_GameWindow_Height.ValueChanged += new System.EventHandler(this.SaveIniFile);
             // 
             // checkBox_GameWindow_TitleBar
             // 
@@ -394,6 +398,7 @@ namespace EasyTH9Adonis
             this.toolTip1.SetToolTip(this.checkBox_GameWindow_TitleBar, "Unchecking this will make the Title Bar disappear.\\nAlso affects the border.\\nYou" +
         " may need to use Task Manager to close the game.");
             this.checkBox_GameWindow_TitleBar.UseVisualStyleBackColor = true;
+            this.checkBox_GameWindow_TitleBar.CheckedChanged += new System.EventHandler(this.SaveIniFile);
             // 
             // checkBox1
             // 
@@ -404,6 +409,7 @@ namespace EasyTH9Adonis
             this.checkBox1.TabIndex = 9;
             this.checkBox1.Text = "Always on top";
             this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.SaveIniFile);
             // 
             // label_UPnPIP
             // 
@@ -426,6 +432,7 @@ namespace EasyTH9Adonis
             this.checkBox_GameWindow_Enabled.Text = "Use these settings for game window";
             this.toolTip1.SetToolTip(this.checkBox_GameWindow_Enabled, "Unchecking this will use the game\'s settings");
             this.checkBox_GameWindow_Enabled.UseVisualStyleBackColor = true;
+            this.checkBox_GameWindow_Enabled.CheckedChanged += new System.EventHandler(this.SaveIniFile);
             // 
             // Form1
             // 
