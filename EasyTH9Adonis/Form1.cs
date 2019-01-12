@@ -43,43 +43,37 @@ namespace EasyTH9Adonis
             numeric_Port.Value = int.Parse(_iniData["SaveIP"]["ServerPort"]);
             textBox_ConnectIP.Text = _iniData["SaveIP"]["PeerIP"];
             if (_iniData["EasyAdonis"]["UseUPnP"] != null)
-                checkBox_useUPNP.Checked = bool.Parse(_iniData["EasyAdonis"]["UseUPnP"]);
-            else _iniData["EasyAdonis"]["UseUPnP"] = checkBox_useUPNP.Checked.ToString();
+                checkBox_UseUPnP.Checked = bool.Parse(_iniData["EasyAdonis"]["UseUPnP"]);
+            else _iniData["EasyAdonis"]["UseUPnP"] = checkBox_UseUPnP.Checked.ToString();
             textBox_username.Text = _iniData["PlayerName"]["Name"];
-
+            numericUpDown_GameWindow_X.Value = int.Parse(_iniData["Window"]["X"]);
+            numericUpDown_GameWindow_Y.Value = int.Parse(_iniData["Window"]["Y"]);
+            numericUpDown_GameWindow_Width.Value = int.Parse(_iniData["Window"]["Width"]);
+            numericUpDown_GameWindow_Height.Value = int.Parse(_iniData["Window"]["Height"]);
+            checkBox_GameWindow_TitleBar.Checked = bool.Parse(_iniData["Window"]["TitleBar"]);
+            checkBox_GameWindow_Enabled.Checked = bool.Parse(_iniData["Window"]["enabled"]);
+            checkBox_GameWindow_AlwaysOnTop.Checked = bool.Parse(_iniData["Window"]["AlwaysOnTop"]);
             #endregion
         }
+
+        private static int ConvertBoolToInt(bool b) => b ? 1 : 0;
 
         private void SaveIniFile()
         {
             _iniData["SaveIP"]["ServerPort"] = numeric_Port.Value.ToString(CultureInfo.InvariantCulture);
             _iniData["SaveIP"]["PeerIP"] = textBox_ConnectIP.Text;
-            _iniData["EasyAdonis"]["UseUPnP"] = checkBox_useUPNP.Checked.ToString();
+            _iniData["EasyAdonis"]["UseUPnP"] = checkBox_UseUPnP.Checked.ToString();
             _iniData["PlayerName"]["Name"] = textBox_username.Text;
+            _iniData["Window"]["X"] = numericUpDown_GameWindow_X.ToString();
+            _iniData["Window"]["Y"] = numericUpDown_GameWindow_Y.ToString();
+            _iniData["Window"]["Width"] = numericUpDown_GameWindow_Width.ToString();
+            _iniData["Window"]["Height"] = numericUpDown_GameWindow_Height.ToString();
+            _iniData["Window"]["TitleBar"] = ConvertBoolToInt(checkBox_GameWindow_TitleBar.Checked).ToString();
+            _iniData["Window"]["AlwaysOnTop"] = ConvertBoolToInt(checkBox_GameWindow_AlwaysOnTop.Checked).ToString();
+            _iniData["Window"]["enabled"] = ConvertBoolToInt(checkBox_GameWindow_Enabled.Checked).ToString();
             _parser.WriteFile(IniFile, _iniData);
         }
         
-        private async void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
-            if (checkBox_useUPNP.Checked)
-            {
-                label_Status.Text = @"Starting UPnP...";
-                var discoverer = new NatDiscoverer();
-                _device = await discoverer.DiscoverDeviceAsync();
-                await _device.CreatePortMapAsync(_currentMapping = new Mapping(Protocol.Udp, Convert.ToInt32(numeric_Port.Value), Convert.ToInt32(numeric_Port.Value), "Touhou 7"));
-                 textBox_upnpIP.Text = (await _device.GetExternalIPAsync()).ToString();
-                label_Status.Text = @"UPnP started.";
-            }
-            else
-            {
-                label_Status.Text = @"Stopping UPnP...";
-                await _device.DeletePortMapAsync(_currentMapping);
-                textBox_upnpIP.Text = @"UPnP Disabled";
-                label_Status.Text = @"UpnP disabled.";
-            }
-            
-        }
-
         #if DEBUG
         private byte KillRogueAdonis()
         #else 
@@ -186,6 +180,7 @@ namespace EasyTH9Adonis
 
         private void btn_StartServer_Click(object sender, EventArgs e)
         {
+            SaveIniFile();
             StartAdonis();
             _inputSimulator.Keyboard.TextEntry("s");
             _inputSimulator.Keyboard.KeyPress(VirtualKeyCode.RETURN); // Select server option
@@ -203,7 +198,7 @@ namespace EasyTH9Adonis
 
         private async void numeric_Port_ValueChanged(object sender, EventArgs e)
         {
-            if (!checkBox_useUPNP.Checked) return;
+            if (!checkBox_UseUPnP.Checked) return;
             textBox_upnpIP.Text = @"Updating UPnP...";
             #if DEBUG
             label_Status.Text = @"Deleting existing UPnP...";
@@ -226,6 +221,7 @@ namespace EasyTH9Adonis
 
         private void btn_Client_Click(object sender, EventArgs e)
         {
+            SaveIniFile();
             StartAdonis();
             _inputSimulator.Keyboard.TextEntry("c");
             _inputSimulator.Keyboard.KeyPress(VirtualKeyCode.RETURN); // Select client option
@@ -245,6 +241,7 @@ namespace EasyTH9Adonis
 
         private void btn_watch_Click(object sender, EventArgs e)
         {
+            SaveIniFile();
             StartAdonis();
             _inputSimulator.Keyboard.TextEntry("w");
             _inputSimulator.Keyboard.KeyPress(VirtualKeyCode.RETURN); // Select client option
@@ -259,7 +256,25 @@ namespace EasyTH9Adonis
 
         private void label_GitHub_Click(object sender, EventArgs e) => Process.Start("https://github.com/Tudi20/easyth09adonis");
 
-        private void SaveIniFile(object sender, EventArgs e) => SaveIniFile();
+        private async void checkBox_UseUPnP_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox_UseUPnP.Checked)
+            {
+                label_Status.Text = @"Starting UPnP...";
+                var discoverer = new NatDiscoverer();
+                _device = await discoverer.DiscoverDeviceAsync();
+                await _device.CreatePortMapAsync(_currentMapping = new Mapping(Protocol.Udp, Convert.ToInt32(numeric_Port.Value), Convert.ToInt32(numeric_Port.Value), "Touhou 7"));
+                textBox_upnpIP.Text = (await _device.GetExternalIPAsync()).ToString();
+                label_Status.Text = @"UPnP started.";
+            }
+            else
+            {
+                label_Status.Text = @"Stopping UPnP...";
+                await _device.DeletePortMapAsync(_currentMapping);
+                textBox_upnpIP.Text = @"UPnP Disabled";
+                label_Status.Text = @"UpnP disabled.";
+            }
+        }
     }
 
     internal static class NativeMethods

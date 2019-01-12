@@ -33,60 +33,60 @@ namespace EasyTH9Adonis
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.checkBox_useUPNP = new System.Windows.Forms.CheckBox();
+            this.checkBox_UseUPnP = new System.Windows.Forms.CheckBox();
             this.label_Port = new System.Windows.Forms.Label();
             this.numeric_Port = new System.Windows.Forms.NumericUpDown();
             this.textBox_upnpIP = new System.Windows.Forms.TextBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.page_Server = new System.Windows.Forms.TabPage();
+            this.label_UPnPIP = new System.Windows.Forms.Label();
             this.btn_StartServer = new System.Windows.Forms.Button();
             this.page_ClientWatch = new System.Windows.Forms.TabPage();
             this.btn_watch = new System.Windows.Forms.Button();
             this.btn_Client = new System.Windows.Forms.Button();
             this.textBox_ConnectIP = new System.Windows.Forms.TextBox();
             this.label_IP2 = new System.Windows.Forms.Label();
+            this.page_GameWindow = new System.Windows.Forms.TabPage();
+            this.checkBox_GameWindow_Enabled = new System.Windows.Forms.CheckBox();
+            this.checkBox_GameWindow_AlwaysOnTop = new System.Windows.Forms.CheckBox();
+            this.checkBox_GameWindow_TitleBar = new System.Windows.Forms.CheckBox();
+            this.numericUpDown_GameWindow_Height = new System.Windows.Forms.NumericUpDown();
+            this.label_GameWindow_Height = new System.Windows.Forms.Label();
+            this.numericUpDown_GameWindow_Width = new System.Windows.Forms.NumericUpDown();
+            this.label_GameWindow_Width = new System.Windows.Forms.Label();
+            this.numericUpDown_GameWindow_Y = new System.Windows.Forms.NumericUpDown();
+            this.label_GameWindow_Y = new System.Windows.Forms.Label();
+            this.numericUpDown_GameWindow_X = new System.Windows.Forms.NumericUpDown();
+            this.label_GameWindow_X = new System.Windows.Forms.Label();
             this.label_Status = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.domain_Adonis = new System.Windows.Forms.DomainUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox_username = new System.Windows.Forms.TextBox();
             this.label_GitHub = new System.Windows.Forms.Label();
-            this.page_GameWindow = new System.Windows.Forms.TabPage();
-            this.label_GameWindow_X = new System.Windows.Forms.Label();
-            this.numericUpDown_GameWindow_X = new System.Windows.Forms.NumericUpDown();
-            this.label_GameWindow_Y = new System.Windows.Forms.Label();
-            this.numericUpDown_GameWindow_Y = new System.Windows.Forms.NumericUpDown();
-            this.label_GameWindow_Width = new System.Windows.Forms.Label();
-            this.numericUpDown_GameWindow_Width = new System.Windows.Forms.NumericUpDown();
-            this.label_GameWindow_Height = new System.Windows.Forms.Label();
-            this.numericUpDown_GameWindow_Height = new System.Windows.Forms.NumericUpDown();
-            this.checkBox_GameWindow_TitleBar = new System.Windows.Forms.CheckBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.label_UPnPIP = new System.Windows.Forms.Label();
-            this.checkBox_GameWindow_Enabled = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.numeric_Port)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.page_Server.SuspendLayout();
             this.page_ClientWatch.SuspendLayout();
             this.page_GameWindow.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_GameWindow_X)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_GameWindow_Y)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_GameWindow_Width)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_GameWindow_Height)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_GameWindow_Width)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_GameWindow_Y)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_GameWindow_X)).BeginInit();
             this.SuspendLayout();
             // 
-            // checkBox_useUPNP
+            // checkBox_UseUPnP
             // 
-            this.checkBox_useUPNP.AutoSize = true;
-            this.checkBox_useUPNP.Location = new System.Drawing.Point(6, 8);
-            this.checkBox_useUPNP.Name = "checkBox_useUPNP";
-            this.checkBox_useUPNP.Size = new System.Drawing.Size(76, 17);
-            this.checkBox_useUPNP.TabIndex = 0;
-            this.checkBox_useUPNP.Text = "Use UPnP";
-            this.toolTip1.SetToolTip(this.checkBox_useUPNP, "Enables Universal Plug and Play.\\n\r\nIf your router supports UPnP this should allo" +
+            this.checkBox_UseUPnP.AutoSize = true;
+            this.checkBox_UseUPnP.Location = new System.Drawing.Point(6, 8);
+            this.checkBox_UseUPnP.Name = "checkBox_UseUPnP";
+            this.checkBox_UseUPnP.Size = new System.Drawing.Size(76, 17);
+            this.checkBox_UseUPnP.TabIndex = 0;
+            this.checkBox_UseUPnP.Text = "Use UPnP";
+            this.toolTip1.SetToolTip(this.checkBox_UseUPnP, "Enables Universal Plug and Play.\\n\r\nIf your router supports UPnP this should allo" +
         "w you for automatic port fowarding.\\n\r\nMay or may not actually work.");
-            this.checkBox_useUPNP.UseVisualStyleBackColor = true;
-            this.checkBox_useUPNP.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            this.checkBox_UseUPnP.UseVisualStyleBackColor = true;
+            this.checkBox_UseUPnP.CheckedChanged += new System.EventHandler(this.checkBox_UseUPnP_CheckedChanged);
             // 
             // label_Port
             // 
@@ -147,7 +147,7 @@ namespace EasyTH9Adonis
             // 
             this.page_Server.Controls.Add(this.label_UPnPIP);
             this.page_Server.Controls.Add(this.btn_StartServer);
-            this.page_Server.Controls.Add(this.checkBox_useUPNP);
+            this.page_Server.Controls.Add(this.checkBox_UseUPnP);
             this.page_Server.Controls.Add(this.textBox_upnpIP);
             this.page_Server.Location = new System.Drawing.Point(4, 22);
             this.page_Server.Name = "page_Server";
@@ -156,6 +156,15 @@ namespace EasyTH9Adonis
             this.page_Server.TabIndex = 0;
             this.page_Server.Text = "Server";
             this.page_Server.UseVisualStyleBackColor = true;
+            // 
+            // label_UPnPIP
+            // 
+            this.label_UPnPIP.AutoSize = true;
+            this.label_UPnPIP.Location = new System.Drawing.Point(6, 32);
+            this.label_UPnPIP.Name = "label_UPnPIP";
+            this.label_UPnPIP.Size = new System.Drawing.Size(51, 13);
+            this.label_UPnPIP.TabIndex = 6;
+            this.label_UPnPIP.Text = "UPnP IP:";
             // 
             // btn_StartServer
             // 
@@ -224,6 +233,148 @@ namespace EasyTH9Adonis
             this.label_IP2.TabIndex = 4;
             this.label_IP2.Text = "IP:";
             // 
+            // page_GameWindow
+            // 
+            this.page_GameWindow.Controls.Add(this.checkBox_GameWindow_Enabled);
+            this.page_GameWindow.Controls.Add(this.checkBox_GameWindow_AlwaysOnTop);
+            this.page_GameWindow.Controls.Add(this.checkBox_GameWindow_TitleBar);
+            this.page_GameWindow.Controls.Add(this.numericUpDown_GameWindow_Height);
+            this.page_GameWindow.Controls.Add(this.label_GameWindow_Height);
+            this.page_GameWindow.Controls.Add(this.numericUpDown_GameWindow_Width);
+            this.page_GameWindow.Controls.Add(this.label_GameWindow_Width);
+            this.page_GameWindow.Controls.Add(this.numericUpDown_GameWindow_Y);
+            this.page_GameWindow.Controls.Add(this.label_GameWindow_Y);
+            this.page_GameWindow.Controls.Add(this.numericUpDown_GameWindow_X);
+            this.page_GameWindow.Controls.Add(this.label_GameWindow_X);
+            this.page_GameWindow.Location = new System.Drawing.Point(4, 22);
+            this.page_GameWindow.Name = "page_GameWindow";
+            this.page_GameWindow.Size = new System.Drawing.Size(225, 94);
+            this.page_GameWindow.TabIndex = 2;
+            this.page_GameWindow.Text = "Game Window";
+            this.toolTip1.SetToolTip(this.page_GameWindow, "Modify the game\'s window to your heart\'s content.");
+            this.page_GameWindow.UseVisualStyleBackColor = true;
+            // 
+            // checkBox_GameWindow_Enabled
+            // 
+            this.checkBox_GameWindow_Enabled.AutoSize = true;
+            this.checkBox_GameWindow_Enabled.Checked = true;
+            this.checkBox_GameWindow_Enabled.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox_GameWindow_Enabled.Location = new System.Drawing.Point(6, 67);
+            this.checkBox_GameWindow_Enabled.Name = "checkBox_GameWindow_Enabled";
+            this.checkBox_GameWindow_Enabled.Size = new System.Drawing.Size(196, 17);
+            this.checkBox_GameWindow_Enabled.TabIndex = 10;
+            this.checkBox_GameWindow_Enabled.Text = "Use these settings for game window";
+            this.toolTip1.SetToolTip(this.checkBox_GameWindow_Enabled, "Unchecking this will use the game\'s settings");
+            this.checkBox_GameWindow_Enabled.UseVisualStyleBackColor = true;
+            // 
+            // checkBox_GameWindow_AlwaysOnTop
+            // 
+            this.checkBox_GameWindow_AlwaysOnTop.AutoSize = true;
+            this.checkBox_GameWindow_AlwaysOnTop.Location = new System.Drawing.Point(114, 48);
+            this.checkBox_GameWindow_AlwaysOnTop.Name = "checkBox_GameWindow_AlwaysOnTop";
+            this.checkBox_GameWindow_AlwaysOnTop.Size = new System.Drawing.Size(92, 17);
+            this.checkBox_GameWindow_AlwaysOnTop.TabIndex = 9;
+            this.checkBox_GameWindow_AlwaysOnTop.Text = "Always on top";
+            this.checkBox_GameWindow_AlwaysOnTop.UseVisualStyleBackColor = true;
+            // 
+            // checkBox_GameWindow_TitleBar
+            // 
+            this.checkBox_GameWindow_TitleBar.AutoSize = true;
+            this.checkBox_GameWindow_TitleBar.Checked = true;
+            this.checkBox_GameWindow_TitleBar.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox_GameWindow_TitleBar.Location = new System.Drawing.Point(6, 48);
+            this.checkBox_GameWindow_TitleBar.Name = "checkBox_GameWindow_TitleBar";
+            this.checkBox_GameWindow_TitleBar.Size = new System.Drawing.Size(101, 17);
+            this.checkBox_GameWindow_TitleBar.TabIndex = 8;
+            this.checkBox_GameWindow_TitleBar.Text = "Enable Title Bar";
+            this.toolTip1.SetToolTip(this.checkBox_GameWindow_TitleBar, "Unchecking this will make the Title Bar disappear.\\nAlso affects the border.\\nYou" +
+        " may need to use Task Manager to close the game.");
+            this.checkBox_GameWindow_TitleBar.UseVisualStyleBackColor = true;
+            // 
+            // numericUpDown_GameWindow_Height
+            // 
+            this.numericUpDown_GameWindow_Height.Location = new System.Drawing.Point(155, 23);
+            this.numericUpDown_GameWindow_Height.Maximum = new decimal(new int[] {
+            4000,
+            0,
+            0,
+            0});
+            this.numericUpDown_GameWindow_Height.Name = "numericUpDown_GameWindow_Height";
+            this.numericUpDown_GameWindow_Height.Size = new System.Drawing.Size(60, 20);
+            this.numericUpDown_GameWindow_Height.TabIndex = 7;
+            // 
+            // label_GameWindow_Height
+            // 
+            this.label_GameWindow_Height.AutoSize = true;
+            this.label_GameWindow_Height.Location = new System.Drawing.Point(111, 25);
+            this.label_GameWindow_Height.Name = "label_GameWindow_Height";
+            this.label_GameWindow_Height.Size = new System.Drawing.Size(41, 13);
+            this.label_GameWindow_Height.TabIndex = 6;
+            this.label_GameWindow_Height.Text = "Height:";
+            // 
+            // numericUpDown_GameWindow_Width
+            // 
+            this.numericUpDown_GameWindow_Width.Location = new System.Drawing.Point(45, 23);
+            this.numericUpDown_GameWindow_Width.Maximum = new decimal(new int[] {
+            4000,
+            0,
+            0,
+            0});
+            this.numericUpDown_GameWindow_Width.Name = "numericUpDown_GameWindow_Width";
+            this.numericUpDown_GameWindow_Width.Size = new System.Drawing.Size(60, 20);
+            this.numericUpDown_GameWindow_Width.TabIndex = 5;
+            // 
+            // label_GameWindow_Width
+            // 
+            this.label_GameWindow_Width.AutoSize = true;
+            this.label_GameWindow_Width.Location = new System.Drawing.Point(3, 25);
+            this.label_GameWindow_Width.Name = "label_GameWindow_Width";
+            this.label_GameWindow_Width.Size = new System.Drawing.Size(38, 13);
+            this.label_GameWindow_Width.TabIndex = 4;
+            this.label_GameWindow_Width.Text = "Width:";
+            // 
+            // numericUpDown_GameWindow_Y
+            // 
+            this.numericUpDown_GameWindow_Y.Location = new System.Drawing.Point(155, 2);
+            this.numericUpDown_GameWindow_Y.Maximum = new decimal(new int[] {
+            4000,
+            0,
+            0,
+            0});
+            this.numericUpDown_GameWindow_Y.Name = "numericUpDown_GameWindow_Y";
+            this.numericUpDown_GameWindow_Y.Size = new System.Drawing.Size(60, 20);
+            this.numericUpDown_GameWindow_Y.TabIndex = 3;
+            // 
+            // label_GameWindow_Y
+            // 
+            this.label_GameWindow_Y.AutoSize = true;
+            this.label_GameWindow_Y.Location = new System.Drawing.Point(111, 4);
+            this.label_GameWindow_Y.Name = "label_GameWindow_Y";
+            this.label_GameWindow_Y.Size = new System.Drawing.Size(17, 13);
+            this.label_GameWindow_Y.TabIndex = 2;
+            this.label_GameWindow_Y.Text = "Y:";
+            // 
+            // numericUpDown_GameWindow_X
+            // 
+            this.numericUpDown_GameWindow_X.Location = new System.Drawing.Point(45, 2);
+            this.numericUpDown_GameWindow_X.Maximum = new decimal(new int[] {
+            4000,
+            0,
+            0,
+            0});
+            this.numericUpDown_GameWindow_X.Name = "numericUpDown_GameWindow_X";
+            this.numericUpDown_GameWindow_X.Size = new System.Drawing.Size(60, 20);
+            this.numericUpDown_GameWindow_X.TabIndex = 1;
+            // 
+            // label_GameWindow_X
+            // 
+            this.label_GameWindow_X.AutoSize = true;
+            this.label_GameWindow_X.Location = new System.Drawing.Point(2, 4);
+            this.label_GameWindow_X.Name = "label_GameWindow_X";
+            this.label_GameWindow_X.Size = new System.Drawing.Size(17, 13);
+            this.label_GameWindow_X.TabIndex = 0;
+            this.label_GameWindow_X.Text = "X:";
+            // 
             // label_Status
             // 
             this.label_Status.AutoSize = true;
@@ -263,7 +414,6 @@ namespace EasyTH9Adonis
             this.textBox_username.Size = new System.Drawing.Size(160, 20);
             this.textBox_username.TabIndex = 10;
             this.toolTip1.SetToolTip(this.textBox_username, "The username to display in adonis.");
-            this.textBox_username.TextChanged += new System.EventHandler(this.SaveIniFile);
             // 
             // label_GitHub
             // 
@@ -275,164 +425,6 @@ namespace EasyTH9Adonis
             this.label_GitHub.TabIndex = 8;
             this.label_GitHub.Text = "Click me to get to the GitHub page.";
             this.label_GitHub.Click += new System.EventHandler(this.label_GitHub_Click);
-            // 
-            // page_GameWindow
-            // 
-            this.page_GameWindow.Controls.Add(this.checkBox_GameWindow_Enabled);
-            this.page_GameWindow.Controls.Add(this.checkBox1);
-            this.page_GameWindow.Controls.Add(this.checkBox_GameWindow_TitleBar);
-            this.page_GameWindow.Controls.Add(this.numericUpDown_GameWindow_Height);
-            this.page_GameWindow.Controls.Add(this.label_GameWindow_Height);
-            this.page_GameWindow.Controls.Add(this.numericUpDown_GameWindow_Width);
-            this.page_GameWindow.Controls.Add(this.label_GameWindow_Width);
-            this.page_GameWindow.Controls.Add(this.numericUpDown_GameWindow_Y);
-            this.page_GameWindow.Controls.Add(this.label_GameWindow_Y);
-            this.page_GameWindow.Controls.Add(this.numericUpDown_GameWindow_X);
-            this.page_GameWindow.Controls.Add(this.label_GameWindow_X);
-            this.page_GameWindow.Location = new System.Drawing.Point(4, 22);
-            this.page_GameWindow.Name = "page_GameWindow";
-            this.page_GameWindow.Size = new System.Drawing.Size(225, 94);
-            this.page_GameWindow.TabIndex = 2;
-            this.page_GameWindow.Text = "Game Window";
-            this.toolTip1.SetToolTip(this.page_GameWindow, "Modify the game\'s window to your heart\'s content.");
-            this.page_GameWindow.UseVisualStyleBackColor = true;
-            // 
-            // label_GameWindow_X
-            // 
-            this.label_GameWindow_X.AutoSize = true;
-            this.label_GameWindow_X.Location = new System.Drawing.Point(2, 4);
-            this.label_GameWindow_X.Name = "label_GameWindow_X";
-            this.label_GameWindow_X.Size = new System.Drawing.Size(17, 13);
-            this.label_GameWindow_X.TabIndex = 0;
-            this.label_GameWindow_X.Text = "X:";
-            // 
-            // numericUpDown_GameWindow_X
-            // 
-            this.numericUpDown_GameWindow_X.Location = new System.Drawing.Point(45, 2);
-            this.numericUpDown_GameWindow_X.Maximum = new decimal(new int[] {
-            4000,
-            0,
-            0,
-            0});
-            this.numericUpDown_GameWindow_X.Name = "numericUpDown_GameWindow_X";
-            this.numericUpDown_GameWindow_X.Size = new System.Drawing.Size(60, 20);
-            this.numericUpDown_GameWindow_X.TabIndex = 1;
-            this.numericUpDown_GameWindow_X.ValueChanged += new System.EventHandler(this.SaveIniFile);
-            // 
-            // label_GameWindow_Y
-            // 
-            this.label_GameWindow_Y.AutoSize = true;
-            this.label_GameWindow_Y.Location = new System.Drawing.Point(111, 4);
-            this.label_GameWindow_Y.Name = "label_GameWindow_Y";
-            this.label_GameWindow_Y.Size = new System.Drawing.Size(17, 13);
-            this.label_GameWindow_Y.TabIndex = 2;
-            this.label_GameWindow_Y.Text = "Y:";
-            // 
-            // numericUpDown_GameWindow_Y
-            // 
-            this.numericUpDown_GameWindow_Y.Location = new System.Drawing.Point(155, 2);
-            this.numericUpDown_GameWindow_Y.Maximum = new decimal(new int[] {
-            4000,
-            0,
-            0,
-            0});
-            this.numericUpDown_GameWindow_Y.Name = "numericUpDown_GameWindow_Y";
-            this.numericUpDown_GameWindow_Y.Size = new System.Drawing.Size(60, 20);
-            this.numericUpDown_GameWindow_Y.TabIndex = 3;
-            this.numericUpDown_GameWindow_Y.ValueChanged += new System.EventHandler(this.SaveIniFile);
-            // 
-            // label_GameWindow_Width
-            // 
-            this.label_GameWindow_Width.AutoSize = true;
-            this.label_GameWindow_Width.Location = new System.Drawing.Point(3, 25);
-            this.label_GameWindow_Width.Name = "label_GameWindow_Width";
-            this.label_GameWindow_Width.Size = new System.Drawing.Size(38, 13);
-            this.label_GameWindow_Width.TabIndex = 4;
-            this.label_GameWindow_Width.Text = "Width:";
-            // 
-            // numericUpDown_GameWindow_Width
-            // 
-            this.numericUpDown_GameWindow_Width.Location = new System.Drawing.Point(45, 23);
-            this.numericUpDown_GameWindow_Width.Maximum = new decimal(new int[] {
-            4000,
-            0,
-            0,
-            0});
-            this.numericUpDown_GameWindow_Width.Name = "numericUpDown_GameWindow_Width";
-            this.numericUpDown_GameWindow_Width.Size = new System.Drawing.Size(60, 20);
-            this.numericUpDown_GameWindow_Width.TabIndex = 5;
-            this.numericUpDown_GameWindow_Width.ValueChanged += new System.EventHandler(this.SaveIniFile);
-            // 
-            // label_GameWindow_Height
-            // 
-            this.label_GameWindow_Height.AutoSize = true;
-            this.label_GameWindow_Height.Location = new System.Drawing.Point(111, 25);
-            this.label_GameWindow_Height.Name = "label_GameWindow_Height";
-            this.label_GameWindow_Height.Size = new System.Drawing.Size(41, 13);
-            this.label_GameWindow_Height.TabIndex = 6;
-            this.label_GameWindow_Height.Text = "Height:";
-            // 
-            // numericUpDown_GameWindow_Height
-            // 
-            this.numericUpDown_GameWindow_Height.Location = new System.Drawing.Point(155, 23);
-            this.numericUpDown_GameWindow_Height.Maximum = new decimal(new int[] {
-            4000,
-            0,
-            0,
-            0});
-            this.numericUpDown_GameWindow_Height.Name = "numericUpDown_GameWindow_Height";
-            this.numericUpDown_GameWindow_Height.Size = new System.Drawing.Size(60, 20);
-            this.numericUpDown_GameWindow_Height.TabIndex = 7;
-            this.numericUpDown_GameWindow_Height.ValueChanged += new System.EventHandler(this.SaveIniFile);
-            // 
-            // checkBox_GameWindow_TitleBar
-            // 
-            this.checkBox_GameWindow_TitleBar.AutoSize = true;
-            this.checkBox_GameWindow_TitleBar.Checked = true;
-            this.checkBox_GameWindow_TitleBar.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox_GameWindow_TitleBar.Location = new System.Drawing.Point(6, 48);
-            this.checkBox_GameWindow_TitleBar.Name = "checkBox_GameWindow_TitleBar";
-            this.checkBox_GameWindow_TitleBar.Size = new System.Drawing.Size(101, 17);
-            this.checkBox_GameWindow_TitleBar.TabIndex = 8;
-            this.checkBox_GameWindow_TitleBar.Text = "Enable Title Bar";
-            this.toolTip1.SetToolTip(this.checkBox_GameWindow_TitleBar, "Unchecking this will make the Title Bar disappear.\\nAlso affects the border.\\nYou" +
-        " may need to use Task Manager to close the game.");
-            this.checkBox_GameWindow_TitleBar.UseVisualStyleBackColor = true;
-            this.checkBox_GameWindow_TitleBar.CheckedChanged += new System.EventHandler(this.SaveIniFile);
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(114, 48);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(92, 17);
-            this.checkBox1.TabIndex = 9;
-            this.checkBox1.Text = "Always on top";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.SaveIniFile);
-            // 
-            // label_UPnPIP
-            // 
-            this.label_UPnPIP.AutoSize = true;
-            this.label_UPnPIP.Location = new System.Drawing.Point(6, 32);
-            this.label_UPnPIP.Name = "label_UPnPIP";
-            this.label_UPnPIP.Size = new System.Drawing.Size(51, 13);
-            this.label_UPnPIP.TabIndex = 6;
-            this.label_UPnPIP.Text = "UPnP IP:";
-            // 
-            // checkBox_GameWindow_Enabled
-            // 
-            this.checkBox_GameWindow_Enabled.AutoSize = true;
-            this.checkBox_GameWindow_Enabled.Checked = true;
-            this.checkBox_GameWindow_Enabled.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox_GameWindow_Enabled.Location = new System.Drawing.Point(6, 67);
-            this.checkBox_GameWindow_Enabled.Name = "checkBox_GameWindow_Enabled";
-            this.checkBox_GameWindow_Enabled.Size = new System.Drawing.Size(196, 17);
-            this.checkBox_GameWindow_Enabled.TabIndex = 10;
-            this.checkBox_GameWindow_Enabled.Text = "Use these settings for game window";
-            this.toolTip1.SetToolTip(this.checkBox_GameWindow_Enabled, "Unchecking this will use the game\'s settings");
-            this.checkBox_GameWindow_Enabled.UseVisualStyleBackColor = true;
-            this.checkBox_GameWindow_Enabled.CheckedChanged += new System.EventHandler(this.SaveIniFile);
             // 
             // Form1
             // 
@@ -461,10 +453,10 @@ namespace EasyTH9Adonis
             this.page_ClientWatch.PerformLayout();
             this.page_GameWindow.ResumeLayout(false);
             this.page_GameWindow.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_GameWindow_X)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_GameWindow_Y)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_GameWindow_Width)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_GameWindow_Height)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_GameWindow_Width)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_GameWindow_Y)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_GameWindow_X)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -472,7 +464,7 @@ namespace EasyTH9Adonis
 
         #endregion
 
-        private CheckBox checkBox_useUPNP;
+        private CheckBox checkBox_UseUPnP;
         private Label label_Port;
         private NumericUpDown numeric_Port;
         private TextBox textBox_upnpIP;
@@ -491,7 +483,7 @@ namespace EasyTH9Adonis
         private Label label1;
         private TextBox textBox_username;
         private TabPage page_GameWindow;
-        private CheckBox checkBox1;
+        private CheckBox checkBox_GameWindow_AlwaysOnTop;
         private CheckBox checkBox_GameWindow_TitleBar;
         private NumericUpDown numericUpDown_GameWindow_Height;
         private Label label_GameWindow_Height;
