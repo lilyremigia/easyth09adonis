@@ -48,6 +48,8 @@ namespace EasyTH9Adonis
             this.label_Status = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.domain_Adonis = new System.Windows.Forms.DomainUpDown();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textBox_username = new System.Windows.Forms.TextBox();
             this.label_GitHub = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numeric_Port)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -73,9 +75,9 @@ namespace EasyTH9Adonis
             this.label_Port.AutoSize = true;
             this.label_Port.Location = new System.Drawing.Point(16, 104);
             this.label_Port.Name = "label_Port";
-            this.label_Port.Size = new System.Drawing.Size(26, 13);
+            this.label_Port.Size = new System.Drawing.Size(29, 13);
             this.label_Port.TabIndex = 1;
-            this.label_Port.Text = "Port";
+            this.label_Port.Text = "Port:";
             // 
             // numeric_Port
             // 
@@ -204,7 +206,7 @@ namespace EasyTH9Adonis
             // label_Status
             // 
             this.label_Status.AutoSize = true;
-            this.label_Status.Location = new System.Drawing.Point(16, 128);
+            this.label_Status.Location = new System.Drawing.Point(16, 150);
             this.label_Status.Name = "label_Status";
             this.label_Status.Size = new System.Drawing.Size(38, 13);
             this.label_Status.TabIndex = 6;
@@ -223,11 +225,30 @@ namespace EasyTH9Adonis
             this.toolTip1.SetToolTip(this.domain_Adonis, "The adonis version to use.\\nadnos.exe launches th09.exe, while adonise.exe launch" +
         "es th09e.exe\\nMake sure this is the same!");
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(16, 129);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(58, 13);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "Username:";
+            this.toolTip1.SetToolTip(this.label1, "The username to display in adonis.");
+            // 
+            // textBox_username
+            // 
+            this.textBox_username.Location = new System.Drawing.Point(80, 126);
+            this.textBox_username.Name = "textBox_username";
+            this.textBox_username.Size = new System.Drawing.Size(100, 20);
+            this.textBox_username.TabIndex = 10;
+            this.toolTip1.SetToolTip(this.textBox_username, "The username to display in adonis.");
+            this.textBox_username.TextChanged += new System.EventHandler(this.textBox_username_TextChanged);
+            // 
             // label_GitHub
             // 
             this.label_GitHub.AutoSize = true;
             this.label_GitHub.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.label_GitHub.Location = new System.Drawing.Point(16, 149);
+            this.label_GitHub.Location = new System.Drawing.Point(16, 170);
             this.label_GitHub.Name = "label_GitHub";
             this.label_GitHub.Size = new System.Drawing.Size(173, 13);
             this.label_GitHub.TabIndex = 8;
@@ -238,7 +259,9 @@ namespace EasyTH9Adonis
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(252, 172);
+            this.ClientSize = new System.Drawing.Size(252, 187);
+            this.Controls.Add(this.textBox_username);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.label_GitHub);
             this.Controls.Add(this.domain_Adonis);
             this.Controls.Add(this.label_Status);
@@ -280,6 +303,8 @@ namespace EasyTH9Adonis
         private ToolTip toolTip1;
         private DomainUpDown domain_Adonis;
         private Label label_GitHub;
+        private Label label1;
+        private TextBox textBox_username;
     }
 }
 

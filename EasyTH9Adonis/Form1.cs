@@ -42,6 +42,10 @@ namespace EasyTH9Adonis
             _iniData = _parser.ReadFile(IniFile);
             numeric_Port.Value = int.Parse(_iniData["SaveIP"]["ServerPort"]);
             textBox_ConnectIP.Text = _iniData["SaveIP"]["PeerIP"];
+            if (_iniData["EasyAdonis"]["UseUPnP"] != null)
+                checkBox_useUPNP.Checked = bool.Parse(_iniData["EasyAdonis"]["UseUPnP"]);
+            else _iniData["EasyAdonis"]["UseUPnP"] = checkBox_useUPNP.Checked.ToString();
+            textBox_username.Text = _iniData["PlayerName"]["Name"];
 
             #endregion
         }
@@ -50,6 +54,8 @@ namespace EasyTH9Adonis
         {
             _iniData["SaveIP"]["ServerPort"] = numeric_Port.Value.ToString(CultureInfo.InvariantCulture);
             _iniData["SaveIP"]["PeerIP"] = textBox_ConnectIP.Text;
+            _iniData["EasyAdonis"]["UseUPnP"] = checkBox_useUPNP.Checked.ToString();
+            _iniData["PlayerName"]["Name"] = textBox_username.Text;
             _parser.WriteFile(IniFile, _iniData);
         }
         
@@ -181,6 +187,7 @@ namespace EasyTH9Adonis
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             StopUpiP();
+            SaveIniFile();
         }
 
         private void btn_Client_Click(object sender, EventArgs e)
@@ -197,10 +204,7 @@ namespace EasyTH9Adonis
 
         private void tabControl1_Deselected(object sender, TabControlEventArgs e)
         {
-            if (e.TabPageIndex == 0)
-            {
-                StopUpiP();
-            }
+            if (e.TabPageIndex == 0) StopUpiP();
         }
 
         private void btn_watch_Click(object sender, EventArgs e)
@@ -215,13 +219,16 @@ namespace EasyTH9Adonis
             label_Status.Text = @"Connecting to Server...";
         }
 
-        private void label_GitHub_Click(object sender, EventArgs e)
+        private void label_GitHub_Click(object sender, EventArgs e) => Process.Start("https://github.com/Tudi20/easyth09adonis");
+
+        private void textBox_username_TextChanged(object sender, EventArgs e)
         {
-            Process.Start("https://github.com/Tudi20/easyth09adonis");
+            _iniData["PlayerName"]["Name"] = textBox_username.Text;
+            _parser.WriteFile(IniFile, _iniData);
         }
     }
 
-    internal class NativeMethods
+    internal static class NativeMethods
     {
         [DllImport("User32.dll")]
         internal static extern int SetForegroundWindow(IntPtr point);
