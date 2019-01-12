@@ -80,33 +80,47 @@ namespace EasyTH9Adonis
             
         }
 
+        #if DEBUG
         private byte KillRogueAdonis()
+        #else 
+        private void KillRogueAdonis()
+        #endif
         {
+            #if DEBUG
             byte wasRogueProcess = 0;
+            #endif
             var p = Process.GetProcessesByName(domain_Adonis.SelectedItem.ToString()).FirstOrDefault();
             if (p != null)
             {
-                wasRogueProcess = 1;
                 #if DEBUG
+                wasRogueProcess = 1;
                 label_Status.Text = @"Killed rogue " + domain_Adonis.SelectedItem + @".exe process!";
                 #endif
             }
 
             p?.Close();
+            #if DEBUG
             return wasRogueProcess;
+            #endif
         }
 
+        #if DEBUG
         private byte KillRogueTouhou()
+        #else
+        private void KillRogueTouhou()
+        #endif
         {
+            #if DEBUG
             byte wasRogueProcess = 0;
+            #endif
             Process p;
             if (domain_Adonis.SelectedIndex == 0)
             {
                 p = Process.GetProcessesByName("th09.exe").FirstOrDefault();
                 if (p != null)
                 {
-                    wasRogueProcess = 1;
                     #if DEBUG
+                    wasRogueProcess = 1;
                     label_Status.Text = @"Killed rogue th09.exe!";
                     #endif
                 }
@@ -118,30 +132,31 @@ namespace EasyTH9Adonis
                 p = Process.GetProcessesByName("th09e.exe").FirstOrDefault();
                 if (p != null)
                 {
-                    wasRogueProcess = 1;
                     #if DEBUG
+                    wasRogueProcess = 1;
                     label_Status.Text = @"Killed rogue th09e.exe!";
                     #endif
                 }
 
                 p?.Close();
             }
-
+            #if DEBUG
             return wasRogueProcess;
+            #endif
         }
 
         private void KillRogueProcesses()
         {
             #if DEBUG
             label_Status.Text = @"Checking for rogue processes...";
-            #else
-            label_Status.Text = @"The girls are preparing...";
-            #endif
             byte wasRogueProcess = 0;
             wasRogueProcess += KillRogueAdonis();
             wasRogueProcess += KillRogueTouhou();
-            #if DEBUG
             label_Status.Text = wasRogueProcess>0 ? @"Finished killing rogue processes." : @"No rogue process has been found.";
+            #else
+            label_Status.Text = @"The girls are preparing...";
+            KillRogueAdonis();
+            KillRogueTouhou();
             #endif
         }
 
