@@ -10,12 +10,6 @@ using Open.Nat;
 
 namespace EasyTH9Adonis
 {
-    internal class NativeMethods
-    {
-        [DllImport("User32.dll")]
-        internal static extern int SetForegroundWindow(IntPtr point);
-    }
-
     public partial class Form1 : Form
     {
         private Mapping _currentMapping;
@@ -199,5 +193,11 @@ namespace EasyTH9Adonis
         {
             Process.Start("https://github.com/Tudi20/easyth09adonis");
         }
+    }
+
+    internal class NativeMethods
+    {
+        [DllImport("User32.dll")]
+        internal static extern int SetForegroundWindow(IntPtr point);
     }
 }
