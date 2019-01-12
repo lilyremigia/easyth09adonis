@@ -1,11 +1,14 @@
-﻿namespace EasyTH9Adonis
+﻿using System.ComponentModel;
+using System.Windows.Forms;
+
+namespace EasyTH9Adonis
 {
     partial class Form1
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -261,22 +264,22 @@
 
         #endregion
 
-        private System.Windows.Forms.CheckBox checkBox_useUPNP;
-        private System.Windows.Forms.Label label_Port;
-        private System.Windows.Forms.NumericUpDown numeric_Port;
-        private System.Windows.Forms.TextBox textBox_upnpIP;
-        private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage page_Server;
-        private System.Windows.Forms.TabPage page_ClientWatch;
-        private System.Windows.Forms.Button btn_StartServer;
-        private System.Windows.Forms.Button btn_watch;
-        private System.Windows.Forms.Button btn_Client;
-        private System.Windows.Forms.TextBox textBox_ConnectIP;
-        private System.Windows.Forms.Label label_IP2;
-        private System.Windows.Forms.Label label_Status;
-        private System.Windows.Forms.ToolTip toolTip1;
-        private System.Windows.Forms.DomainUpDown domain_Adonis;
-        private System.Windows.Forms.Label label_GitHub;
+        private CheckBox checkBox_useUPNP;
+        private Label label_Port;
+        private NumericUpDown numeric_Port;
+        private TextBox textBox_upnpIP;
+        private TabControl tabControl1;
+        private TabPage page_Server;
+        private TabPage page_ClientWatch;
+        private Button btn_StartServer;
+        private Button btn_watch;
+        private Button btn_Client;
+        private TextBox textBox_ConnectIP;
+        private Label label_IP2;
+        private Label label_Status;
+        private ToolTip toolTip1;
+        private DomainUpDown domain_Adonis;
+        private Label label_GitHub;
     }
 }
 

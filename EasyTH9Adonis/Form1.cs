@@ -1,11 +1,15 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows.Forms;
 using WindowsInput;
 using WindowsInput.Native;
+using IniParser;
+using IniParser.Model;
 using Open.Nat;
 
 namespace EasyTH9Adonis
@@ -14,7 +18,11 @@ namespace EasyTH9Adonis
     {
         private Mapping _currentMapping;
         private NatDevice _device;
+        private IniData _iniData;
+        private const string IniFile = "adonis_config";
         private readonly InputSimulator _inputSimulator = new InputSimulator();
+        private readonly FileIniDataParser _parser = new FileIniDataParser();
+        
 
         public Form1()
         {
@@ -23,10 +31,28 @@ namespace EasyTH9Adonis
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            
+            #region LoadIniFile
+            // Exit and Error if Ini File not found.
+            if (!File.Exists(IniFile))
+            {
+                MessageBox.Show(@"Couldn't find adonis_config.ini.\nAre you sure the program in the correct folder?",
+                    @"Ini File Not Found Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Application.Exit();
+            }
+            _iniData = _parser.ReadFile(IniFile);
+            numeric_Port.Value = int.Parse(_iniData["SaveIP"]["ServerPort"]);
+            textBox_ConnectIP.Text = _iniData["SaveIP"]["PeerIP"];
+
+            #endregion
+        }
+
+        private void SaveIniFile()
+        {
+            _iniData["SaveIP"]["ServerPort"] = numeric_Port.Value.ToString(CultureInfo.InvariantCulture);
+            _iniData["SaveIP"]["PeerIP"] = textBox_ConnectIP.Text;
+            _parser.WriteFile(IniFile, _iniData);
         }
         
-
         private async void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBox_useUPNP.Checked)
