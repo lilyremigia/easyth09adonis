@@ -47,6 +47,8 @@ namespace EasyTH9Adonis
             if (_iniData["EasyAdonis"]["UseUPnP"] != null)
                 checkBox_UseUPnP.Checked = bool.Parse(_iniData["EasyAdonis"]["UseUPnP"]);
             else _iniData["EasyAdonis"]["UseUPnP"] = checkBox_UseUPnP.Checked.ToString();
+            if (_iniData["EasyAdonis"]["AdonisType"] != null)
+                domain_Adonis.SelectedIndex = Convert.ToInt32(_iniData["EasyAdonis"]["AdonisType"]);
             textBox_username.Text = _iniData["PlayerName"]["Name"];
             numericUpDown_GameWindow_X.Value = int.Parse(_iniData["Window"]["X"]);
             numericUpDown_GameWindow_Y.Value = int.Parse(_iniData["Window"]["Y"]);
@@ -67,6 +69,7 @@ namespace EasyTH9Adonis
             _iniData["SaveIP"]["ServerPort"] = numeric_Port.Value.ToString(CultureInfo.InvariantCulture);
             _iniData["SaveIP"]["PeerIP"] = textBox_ConnectIP.Text;
             _iniData["EasyAdonis"]["UseUPnP"] = checkBox_UseUPnP.Checked.ToString();
+            _iniData["EasyAdonis"]["AdonisType"] = domain_Adonis.SelectedIndex.ToString();
             _iniData["PlayerName"]["Name"] = textBox_username.Text;
             _iniData["Window"]["X"] = numericUpDown_GameWindow_X.ToString();
             _iniData["Window"]["Y"] = numericUpDown_GameWindow_Y.ToString();
