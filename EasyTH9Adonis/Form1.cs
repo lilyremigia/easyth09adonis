@@ -87,7 +87,9 @@ namespace EasyTH9Adonis
             if (p != null)
             {
                 wasRogueProcess = 1;
+                #if DEBUG
                 label_Status.Text = @"Killed rogue " + domain_Adonis.SelectedItem + @".exe process!";
+                #endif
             }
 
             p?.Close();
@@ -104,7 +106,9 @@ namespace EasyTH9Adonis
                 if (p != null)
                 {
                     wasRogueProcess = 1;
+                    #if DEBUG
                     label_Status.Text = @"Killed rogue th09.exe!";
+                    #endif
                 }
 
                 p?.Close();
@@ -115,7 +119,9 @@ namespace EasyTH9Adonis
                 if (p != null)
                 {
                     wasRogueProcess = 1;
+                    #if DEBUG
                     label_Status.Text = @"Killed rogue th09e.exe!";
+                    #endif
                 }
 
                 p?.Close();
@@ -126,12 +132,17 @@ namespace EasyTH9Adonis
 
         private void KillRogueProcesses()
         {
+            #if DEBUG
             label_Status.Text = @"Checking for rogue processes...";
+            #else
+            label_Status.Text = @"The girls are preparing...";
+            #endif
             byte wasRogueProcess = 0;
             wasRogueProcess += KillRogueAdonis();
             wasRogueProcess += KillRogueTouhou();
-
+            #if DEBUG
             label_Status.Text = wasRogueProcess>0 ? @"Finished killing rogue processes." : @"No rogue process has been found.";
+            #endif
         }
 
         private void StartAdonis()
@@ -165,19 +176,27 @@ namespace EasyTH9Adonis
             _inputSimulator.Keyboard.KeyPress(VirtualKeyCode.RETURN); // Select server option
             _inputSimulator.Keyboard.TextEntry(Convert.ToInt32(numeric_Port.Value).ToString());
             _inputSimulator.Keyboard.KeyPress(VirtualKeyCode.RETURN); //Select port
+            #if DEBUG
             label_Status.Text = @"Waiting for Client to connect...";
+            #endif
             _inputSimulator.Keyboard.KeyPress(VirtualKeyCode.RETURN); //Use recommended latency
             _inputSimulator.Keyboard.KeyPress(VirtualKeyCode.RETURN); //Use default side
+            #if DEBUG
             label_Status.Text = @"Starting Touhou 9...";
+            #endif
         }
 
         private async void numeric_Port_ValueChanged(object sender, EventArgs e)
         {
             if (!checkBox_useUPNP.Checked) return;
             textBox_upnpIP.Text = @"Updating UPnP...";
+            #if DEBUG
             label_Status.Text = @"Deleting existing UPnP...";
+            #endif
             await _device.DeletePortMapAsync(_currentMapping);
+            #if DEBUG
             label_Status.Text = @"Creating new UPnP...";
+            #endif
             await _device.CreatePortMapAsync(_currentMapping = new Mapping(Protocol.Udp, Convert.ToInt32(numeric_Port.Value), Convert.ToInt32(numeric_Port.Value), "Touhou 7"));
             textBox_upnpIP.Text = _device.GetExternalIPAsync().Result.ToString();
             label_Status.Text = @"UPnP updated.";
@@ -199,7 +218,9 @@ namespace EasyTH9Adonis
             _inputSimulator.Keyboard.KeyPress(VirtualKeyCode.RETURN); //Select IP
             _inputSimulator.Keyboard.TextEntry(Convert.ToInt32(numeric_Port.Value).ToString());
             _inputSimulator.Keyboard.KeyPress(VirtualKeyCode.RETURN); //Select port
+            #if DEBUG
             label_Status.Text = @"Connecting to Server...";
+            #endif
         }
 
         private void tabControl1_Deselected(object sender, TabControlEventArgs e)
@@ -216,7 +237,9 @@ namespace EasyTH9Adonis
             _inputSimulator.Keyboard.KeyPress(VirtualKeyCode.RETURN); //Select IP
             _inputSimulator.Keyboard.TextEntry(Convert.ToInt32(numeric_Port.Value).ToString());
             _inputSimulator.Keyboard.KeyPress(VirtualKeyCode.RETURN); //Select port
+            #if DEBUG
             label_Status.Text = @"Connecting to Server...";
+            #endif
         }
 
         private void label_GitHub_Click(object sender, EventArgs e) => Process.Start("https://github.com/Tudi20/easyth09adonis");
