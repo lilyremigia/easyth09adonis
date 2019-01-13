@@ -71,7 +71,7 @@ namespace EasyTH9Adonis
         private void UpdateMaxCoords()
         {
             numericUpDown_GameWindow_X.Maximum = _screenWidth - numericUpDown_GameWindow_Width.Value;
-            numericUpDown_GameWindow_Y.Maximum = _screenWidth - numericUpDown_GameWindow_Height.Value;
+            numericUpDown_GameWindow_Y.Maximum = _screenHeight - numericUpDown_GameWindow_Height.Value;
             toolTip1.SetToolTip(numericUpDown_GameWindow_X,
                 "The maximum size is your screen's width - the width value set for the game.\n" +
                 $"Current maximum: {numericUpDown_GameWindow_X.Maximum}");
@@ -103,7 +103,7 @@ namespace EasyTH9Adonis
 
         #if DEBUG
         private byte KillRogueAdonis()
-        #else
+            #else
         private void KillRogueAdonis()
             #endif
         {
@@ -127,7 +127,7 @@ namespace EasyTH9Adonis
 
         #if DEBUG
         private byte KillRogueTouhou()
-        #else
+            #else
         private void KillRogueTouhou()
             #endif
         {
