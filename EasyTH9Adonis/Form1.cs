@@ -201,6 +201,7 @@ namespace EasyTH9Adonis
 
         private async void StopUpiP()
         {
+            checkBox_UseUPnP.Checked = false;
             label_Status.Text = @"Stopping UPnP...";
             if (_currentMapping != null) await _device.DeletePortMapAsync(_currentMapping);
             textBox_upnpIP.Text = @"UPnP Disabled";
@@ -265,7 +266,7 @@ namespace EasyTH9Adonis
 
         private void tabControl1_Deselected(object sender, TabControlEventArgs e)
         {
-            if (e.TabPageIndex == 0) StopUpiP();
+            if (e.TabPageIndex == 0 && checkBox_UseUPnP.Checked) StopUpiP();
         }
 
         private void btn_watch_Click(object sender, EventArgs e)
