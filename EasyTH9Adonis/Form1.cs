@@ -81,7 +81,7 @@ namespace EasyTH9Adonis
         }
 
         private static int ConvertBoolToInt(bool b) => b ? 1 : 0;
-        private static bool ConvertIntTextToBool(string i) => int.Parse(i) > 0;
+        private static bool ConvertIntTextToBool(string i) => Convert.ToInt32(i) > 0;
 
         private void SaveIniFile()
         {
@@ -91,10 +91,10 @@ namespace EasyTH9Adonis
             _iniData["EasyAdonis"]["UseUPnP"] = checkBox_UseUPnP.Checked.ToString();
             _iniData["EasyAdonis"]["AdonisType"] = domain_Adonis.SelectedIndex.ToString();
             _iniData["PlayerName"]["Name"] = textBox_username.Text;
-            _iniData["Window"]["X"] = numericUpDown_GameWindow_X.ToString();
-            _iniData["Window"]["Y"] = numericUpDown_GameWindow_Y.ToString();
-            _iniData["Window"]["Width"] = numericUpDown_GameWindow_Width.ToString();
-            _iniData["Window"]["Height"] = numericUpDown_GameWindow_Height.ToString();
+            _iniData["Window"]["X"] = numericUpDown_GameWindow_X.Value.ToString(CultureInfo.InvariantCulture);
+            _iniData["Window"]["Y"] = numericUpDown_GameWindow_Y.Value.ToString(CultureInfo.InvariantCulture);
+            _iniData["Window"]["Width"] = numericUpDown_GameWindow_Width.Value.ToString(CultureInfo.InvariantCulture);
+            _iniData["Window"]["Height"] = numericUpDown_GameWindow_Height.Value.ToString(CultureInfo.InvariantCulture);
             _iniData["Window"]["TitleBar"] = ConvertBoolToInt(checkBox_GameWindow_TitleBar.Checked).ToString();
             _iniData["Window"]["AlwaysOnTop"] = ConvertBoolToInt(checkBox_GameWindow_AlwaysOnTop.Checked).ToString();
             _iniData["Window"]["enabled"] = ConvertBoolToInt(checkBox_GameWindow_Enabled.Checked).ToString();
@@ -104,7 +104,7 @@ namespace EasyTH9Adonis
 
         #if DEBUG
         private byte KillRogueAdonis()
-        #else
+            #else
         private void KillRogueAdonis()
             #endif
         {
@@ -128,7 +128,7 @@ namespace EasyTH9Adonis
 
         #if DEBUG
         private byte KillRogueTouhou()
-        #else
+            #else
         private void KillRogueTouhou()
             #endif
         {
