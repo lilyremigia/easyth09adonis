@@ -16,12 +16,14 @@ namespace EasyTH9Adonis
 {
     public partial class Form1 : Form
     {
-        private Mapping _currentMapping;
-        private NatDevice _device;
-        private IniData _iniData;
         private const string IniFile = "adonis_config";
         private readonly InputSimulator _inputSimulator = new InputSimulator();
         private readonly FileIniDataParser _parser = new FileIniDataParser();
+        private readonly int _screenHeight = Screen.PrimaryScreen.Bounds.Height;
+        private readonly int _screenWidth = Screen.PrimaryScreen.Bounds.Width;
+        private Mapping _currentMapping;
+        private NatDevice _device;
+        private IniData _iniData;
 
 
         public Form1()
@@ -41,6 +43,11 @@ namespace EasyTH9Adonis
                 Application.Exit();
             }
 
+            numericUpDown_GameWindow_Width.Maximum = _screenWidth;
+            numericUpDown_GameWindow_Height.Maximum = _screenHeight;
+
+            UpdateMaxCoords();
+
             _iniData = _parser.ReadFile(IniFile);
             numeric_Port.Value = int.Parse(_iniData["SaveIP"]["ServerPort"]);
             textBox_ConnectIP.Text = _iniData["SaveIP"]["PeerIP"];
@@ -59,6 +66,18 @@ namespace EasyTH9Adonis
             checkBox_GameWindow_AlwaysOnTop.Checked = bool.Parse(_iniData["Window"]["AlwaysOnTop"]);
 
             #endregion
+        }
+
+        private void UpdateMaxCoords()
+        {
+            numericUpDown_GameWindow_X.Maximum = _screenWidth - numericUpDown_GameWindow_Width.Value;
+            numericUpDown_GameWindow_Y.Maximum = _screenWidth - numericUpDown_GameWindow_Height.Value;
+            toolTip1.SetToolTip(numericUpDown_GameWindow_X,
+                "The maximum size is your screen's width - the width value set for the game.\n" +
+                $"Current maximum: {numericUpDown_GameWindow_X.Maximum}");
+            toolTip1.SetToolTip(numericUpDown_GameWindow_Y,
+                "The maximum size is your screen's height - the height value set for the game.\n" +
+                $"Current maximum: {numericUpDown_GameWindow_Y.Maximum}");
         }
 
         private static int ConvertBoolToInt(bool b) => b ? 1 : 0;
@@ -84,7 +103,7 @@ namespace EasyTH9Adonis
 
         #if DEBUG
         private byte KillRogueAdonis()
-        #else
+            #else
         private void KillRogueAdonis()
             #endif
         {
@@ -108,7 +127,7 @@ namespace EasyTH9Adonis
 
         #if DEBUG
         private byte KillRogueTouhou()
-        #else
+            #else
         private void KillRogueTouhou()
             #endif
         {
@@ -155,7 +174,7 @@ namespace EasyTH9Adonis
             wasRogueProcess += KillRogueAdonis();
             wasRogueProcess += KillRogueTouhou();
             label_Status.Text =
- wasRogueProcess>0 ? @"Finished killing rogue processes." : @"No rogue process has been found.";
+                wasRogueProcess > 0 ? @"Finished killing rogue processes." : @"No rogue process has been found.";
             #else
             label_Status.Text = @"The girls are preparing...";
             KillRogueAdonis();
@@ -288,6 +307,8 @@ namespace EasyTH9Adonis
                 label_Status.Text = @"UpnP disabled.";
             }
         }
+
+        private void numericUpDown_GameWindow_Size_ValueChanged(object sender, EventArgs e) => UpdateMaxCoords();
     }
 
     internal static class NativeMethods

@@ -299,9 +299,20 @@ namespace EasyTH9Adonis
             0,
             0,
             0});
+            this.numericUpDown_GameWindow_Height.Minimum = new decimal(new int[] {
+            480,
+            0,
+            0,
+            0});
             this.numericUpDown_GameWindow_Height.Name = "numericUpDown_GameWindow_Height";
             this.numericUpDown_GameWindow_Height.Size = new System.Drawing.Size(60, 20);
             this.numericUpDown_GameWindow_Height.TabIndex = 7;
+            this.numericUpDown_GameWindow_Height.Value = new decimal(new int[] {
+            480,
+            0,
+            0,
+            0});
+            this.numericUpDown_GameWindow_Height.ValueChanged += new System.EventHandler(this.numericUpDown_GameWindow_Size_ValueChanged);
             // 
             // label_GameWindow_Height
             // 
@@ -320,9 +331,20 @@ namespace EasyTH9Adonis
             0,
             0,
             0});
+            this.numericUpDown_GameWindow_Width.Minimum = new decimal(new int[] {
+            640,
+            0,
+            0,
+            0});
             this.numericUpDown_GameWindow_Width.Name = "numericUpDown_GameWindow_Width";
             this.numericUpDown_GameWindow_Width.Size = new System.Drawing.Size(60, 20);
             this.numericUpDown_GameWindow_Width.TabIndex = 5;
+            this.numericUpDown_GameWindow_Width.Value = new decimal(new int[] {
+            640,
+            0,
+            0,
+            0});
+            this.numericUpDown_GameWindow_Width.ValueChanged += new System.EventHandler(this.numericUpDown_GameWindow_Size_ValueChanged);
             // 
             // label_GameWindow_Width
             // 
