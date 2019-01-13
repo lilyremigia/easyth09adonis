@@ -16,7 +16,7 @@ namespace EasyTH9Adonis
 {
     public partial class Form1 : Form
     {
-        private const string IniFile = "adonis_config";
+        private const string IniFile = "adonis_config.ini";
         private readonly InputSimulator _inputSimulator = new InputSimulator();
         private readonly FileIniDataParser _parser = new FileIniDataParser();
         private readonly int _screenHeight = Screen.PrimaryScreen.Bounds.Height;
@@ -38,7 +38,7 @@ namespace EasyTH9Adonis
             // Exit and Error if Ini File not found.
             if (!File.Exists(IniFile))
             {
-                MessageBox.Show(@"Couldn't find adonis_config.ini.\nAre you sure the program in the correct folder?",
+                MessageBox.Show(@"Couldn't find adonis_config.ini. Are you sure the program in the correct folder?",
                     @"Ini File Not Found Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();
             }
@@ -103,7 +103,7 @@ namespace EasyTH9Adonis
 
         #if DEBUG
         private byte KillRogueAdonis()
-            #else
+        #else
         private void KillRogueAdonis()
             #endif
         {
@@ -127,7 +127,7 @@ namespace EasyTH9Adonis
 
         #if DEBUG
         private byte KillRogueTouhou()
-            #else
+        #else
         private void KillRogueTouhou()
             #endif
         {
