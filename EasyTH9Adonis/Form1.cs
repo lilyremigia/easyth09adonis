@@ -61,9 +61,9 @@ namespace EasyTH9Adonis
             numericUpDown_GameWindow_Y.Value = int.Parse(_iniData["Window"]["Y"]);
             numericUpDown_GameWindow_Width.Value = int.Parse(_iniData["Window"]["Width"]);
             numericUpDown_GameWindow_Height.Value = int.Parse(_iniData["Window"]["Height"]);
-            checkBox_GameWindow_TitleBar.Checked = bool.Parse(_iniData["Window"]["TitleBar"]);
-            checkBox_GameWindow_Enabled.Checked = bool.Parse(_iniData["Window"]["enabled"]);
-            checkBox_GameWindow_AlwaysOnTop.Checked = bool.Parse(_iniData["Window"]["AlwaysOnTop"]);
+            checkBox_GameWindow_TitleBar.Checked = ConvertIntTextToBool(_iniData["Window"]["TitleBar"]);
+            checkBox_GameWindow_Enabled.Checked = ConvertIntTextToBool(_iniData["Window"]["enabled"]);
+            checkBox_GameWindow_AlwaysOnTop.Checked = ConvertIntTextToBool(_iniData["Window"]["AlwaysOnTop"]);
 
             #endregion
         }
@@ -81,6 +81,7 @@ namespace EasyTH9Adonis
         }
 
         private static int ConvertBoolToInt(bool b) => b ? 1 : 0;
+        private static bool ConvertIntTextToBool(string i) => int.Parse(i) > 0;
 
         private void SaveIniFile()
         {
@@ -103,7 +104,7 @@ namespace EasyTH9Adonis
 
         #if DEBUG
         private byte KillRogueAdonis()
-            #else
+        #else
         private void KillRogueAdonis()
             #endif
         {
@@ -127,7 +128,7 @@ namespace EasyTH9Adonis
 
         #if DEBUG
         private byte KillRogueTouhou()
-            #else
+        #else
         private void KillRogueTouhou()
             #endif
         {
