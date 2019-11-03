@@ -202,7 +202,7 @@ namespace EasyTH9Adonis
             this.btnPasteInClipboard.TabIndex = 8;
             this.btnPasteInClipboard.Text = "Paste in Clipboard";
             this.toolTip1.SetToolTip(this.btnPasteInClipboard, "Pasten in the IP (and port) from your clipboard.\r\nUsing the xxx.xxx.xxx.xxx:port " +
-        "format.");
+        "format (or seperated by enter)");
             this.btnPasteInClipboard.UseVisualStyleBackColor = true;
             this.btnPasteInClipboard.Click += new System.EventHandler(this.BtnPasteInClipboard_Click);
             // 
