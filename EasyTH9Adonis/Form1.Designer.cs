@@ -198,7 +198,7 @@ namespace EasyTH9Adonis
             // 
             this.btnPasteInClipboard.Location = new System.Drawing.Point(3, 65);
             this.btnPasteInClipboard.Name = "btnPasteInClipboard";
-            this.btnPasteInClipboard.Size = new System.Drawing.Size(216, 23);
+            this.btnPasteInClipboard.Size = new System.Drawing.Size(219, 23);
             this.btnPasteInClipboard.TabIndex = 8;
             this.btnPasteInClipboard.Text = "Paste in Clipboard";
             this.toolTip1.SetToolTip(this.btnPasteInClipboard, "Pasten in the IP (and port) from your clipboard.\r\nUsing the xxx.xxx.xxx.xxx:port " +
@@ -233,7 +233,7 @@ namespace EasyTH9Adonis
             // 
             this.textBox_ConnectIP.Location = new System.Drawing.Point(33, 5);
             this.textBox_ConnectIP.Name = "textBox_ConnectIP";
-            this.textBox_ConnectIP.Size = new System.Drawing.Size(186, 20);
+            this.textBox_ConnectIP.Size = new System.Drawing.Size(189, 20);
             this.textBox_ConnectIP.TabIndex = 5;
             this.toolTip1.SetToolTip(this.textBox_ConnectIP, "The external IP address of the server.\\n\r\nIf you\'re not on the same network make " +
         "sure it\'s not their LAN address!\\n\r\nLAN Address example: 192.168.0.100");

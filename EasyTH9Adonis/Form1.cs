@@ -91,7 +91,8 @@ namespace EasyTH9Adonis
             if (!Clipboard.ContainsText(TextDataFormat.Text)) return;
             string clipboardText = Clipboard.GetText(TextDataFormat.Text);
             if (clipboardText.Trim().Length == 0) return;
-            string[] parts = clipboardText.Split(':');
+            string[] parts = clipboardText.Trim().Split(':');
+            if (parts.Length == 1) parts = clipboardText.Trim().Split('\n');
             textBox_ConnectIP.Text = parts[0];
             if (parts[1].Trim().Length == 0) return;
             numeric_Port.Value = Convert.ToInt32(parts[1].Trim());
