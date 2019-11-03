@@ -139,7 +139,7 @@ namespace EasyTH9Adonis
 #if DEBUG
             label_Status.Text = @"Starting Touhou 9...";
 #endif
-
+            HandleRunningTouhou(ConnectionType.Host);
         }
         private void btn_Client_Click(object sender, EventArgs e)
         {
@@ -154,7 +154,7 @@ namespace EasyTH9Adonis
 #if DEBUG
             label_Status.Text = @"Connecting to Server...";
 #endif
-
+            HandleRunningTouhou(ConnectionType.Client);
         }
         private void btn_watch_Click(object sender, EventArgs e)
         {
@@ -169,7 +169,7 @@ namespace EasyTH9Adonis
 #if DEBUG
             label_Status.Text = @"Connecting to Server...";
 #endif
-
+            HandleRunningTouhou(ConnectionType.Watch);
         }
         #endregion
         #region Touhou 9 Cleanup
