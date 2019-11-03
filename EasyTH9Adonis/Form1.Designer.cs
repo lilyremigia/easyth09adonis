@@ -42,6 +42,7 @@ namespace EasyTH9Adonis
             this.label_UPnPIP = new System.Windows.Forms.Label();
             this.btn_StartServer = new System.Windows.Forms.Button();
             this.page_ClientWatch = new System.Windows.Forms.TabPage();
+            this.btnPasteInClipboard = new System.Windows.Forms.Button();
             this.btn_watch = new System.Windows.Forms.Button();
             this.btn_Client = new System.Windows.Forms.Button();
             this.textBox_ConnectIP = new System.Windows.Forms.TextBox();
@@ -180,6 +181,7 @@ namespace EasyTH9Adonis
             // 
             // page_ClientWatch
             // 
+            this.page_ClientWatch.Controls.Add(this.btnPasteInClipboard);
             this.page_ClientWatch.Controls.Add(this.btn_watch);
             this.page_ClientWatch.Controls.Add(this.btn_Client);
             this.page_ClientWatch.Controls.Add(this.textBox_ConnectIP);
@@ -192,11 +194,23 @@ namespace EasyTH9Adonis
             this.page_ClientWatch.Text = "Client/Watch";
             this.page_ClientWatch.UseVisualStyleBackColor = true;
             // 
+            // btnPasteInClipboard
+            // 
+            this.btnPasteInClipboard.Location = new System.Drawing.Point(3, 65);
+            this.btnPasteInClipboard.Name = "btnPasteInClipboard";
+            this.btnPasteInClipboard.Size = new System.Drawing.Size(216, 23);
+            this.btnPasteInClipboard.TabIndex = 8;
+            this.btnPasteInClipboard.Text = "Paste in Clipboard";
+            this.toolTip1.SetToolTip(this.btnPasteInClipboard, "Pasten in the IP (and port) from your clipboard.\r\nUsing the xxx.xxx.xxx.xxx:port " +
+        "format.");
+            this.btnPasteInClipboard.UseVisualStyleBackColor = true;
+            this.btnPasteInClipboard.Click += new System.EventHandler(this.BtnPasteInClipboard_Click);
+            // 
             // btn_watch
             // 
             this.btn_watch.Location = new System.Drawing.Point(115, 31);
             this.btn_watch.Name = "btn_watch";
-            this.btn_watch.Size = new System.Drawing.Size(107, 57);
+            this.btn_watch.Size = new System.Drawing.Size(107, 28);
             this.btn_watch.TabIndex = 7;
             this.btn_watch.Text = "Watch!";
             this.toolTip1.SetToolTip(this.btn_watch, "Connects to the server as a spectator.\\nThe server host\'s adonis_config.ini shoul" +
@@ -208,7 +222,7 @@ namespace EasyTH9Adonis
             // 
             this.btn_Client.Location = new System.Drawing.Point(3, 31);
             this.btn_Client.Name = "btn_Client";
-            this.btn_Client.Size = new System.Drawing.Size(107, 57);
+            this.btn_Client.Size = new System.Drawing.Size(107, 28);
             this.btn_Client.TabIndex = 6;
             this.btn_Client.Text = "Play!";
             this.toolTip1.SetToolTip(this.btn_Client, "Connects to the server as a client player.\\nOnly one client can exist!");
@@ -517,6 +531,7 @@ namespace EasyTH9Adonis
         private Label label_GameWindow_X;
         private Label label_UPnPIP;
         private CheckBox checkBox_GameWindow_Enabled;
+        private Button btnPasteInClipboard;
     }
 }
 
